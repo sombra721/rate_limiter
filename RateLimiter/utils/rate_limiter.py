@@ -36,9 +36,12 @@ def rate_limiter_dec(func):
             # Number of requests exceeds the limitation, return 429 http status code too many request.
             else:
                 data_dict = {
-                    'status': 'false',
-                    'message': f'There are too many requests in a given amount of time '
-                               f'({rate_limiter.request_limit} requests in past {rate_limiter.time_range} milliseconds)'}
+                    'status':
+                        'false',
+                    'message':
+                        f'There are too many requests in a given amount of time more than {rate_limiter.request_limit} '
+                        f'requests in past {rate_limiter.time_range} milliseconds)'
+                }
                 return JsonResponse(data_dict, status=HTTPStatus.TOO_MANY_REQUESTS)
         # User has not made any requests yet, initiate a new queue to store the timestamp when user made the request.
         else:

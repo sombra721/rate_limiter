@@ -24,7 +24,7 @@ def index(request):
     ...
 ```
 
-Start the server with below command:
+Start the server with the below command:
 ```
 python manage.py runserver
 ```
@@ -32,6 +32,9 @@ python manage.py runserver
 ## Results
 
 If we set time frame with 3 seconds (3000 millisecond) and number of request 5
+
+Sending request by typing URL `http://127.0.0.1:8000/` in the wrb browser. (Or using API tool such as Postman)
+
 ```
 # Time range for rate limiter in millisecond
 TIME_RANGE = 3000
@@ -42,7 +45,7 @@ REQUEST_LIMIT = 5
 
 Case 1: If the request is not with GET method
 ```
-http status code: 405
+http status code: 405 (Method Not Allowed)
 {
   "status": "false",
   "message": "POST method is not allowed, only GET method is accepted."
@@ -51,16 +54,16 @@ http status code: 405
 
 Case 2: If the number of requests the user made exceeds the rate limitation
 ```
-http status code: 429
+http status code: 429 (Too Many Requests)
 {
   "status": "false",
-  "message": "There are too many requests in a given amount of time (5 requests in past 3000 milliseconds)"
+  "message": "There are too many requests in a given amount of time (more than 5 requests in past 3000 milliseconds)"
 }
 ```
 
 Case 3: If the number of requests the user made does not exceed the rate limitation
 ```
-http status code: 200
+http status code: 200 (OK)
 {
   "status": "true",
   "message": "Current time: 2023/09/08 23:31:19 UTC"
