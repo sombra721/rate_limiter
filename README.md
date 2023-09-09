@@ -31,9 +31,7 @@ python manage.py runserver
 
 ## Results
 
-If we set time frame with 3 seconds (3000 millisecond) and number of request 5
-
-Sending request by typing URL `http://127.0.0.1:8000/` in the wrb browser. (Or using API tool such as Postman)
+If we set time frame with 3 seconds (3000 millisecond) and the limitation of 5 request within the time frame.
 
 ```
 # Time range for rate limiter in millisecond
@@ -42,6 +40,8 @@ TIME_RANGE = 3000
 # Number of request allowed within the time period
 REQUEST_LIMIT = 5
 ```
+
+Sending request by typing URL `http://127.0.0.1:8000/` in the web browser. (Or using API tool such as Postman)
 
 Case 1: If the request is not with GET method
 ```
