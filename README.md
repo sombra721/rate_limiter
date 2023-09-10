@@ -2,7 +2,7 @@
 
 Simple program that returns the current time with limiting the number of requests from a user in defined time range.
 
-A class (`RateLimiter`) is created to store the rate limiter data.
+A class [rate_limiter.py](https://github.com/sombra721/rate_limiter/blob/main/RateLimiter/utils/rate_limiter.py) is created to store the rate limiter data.
 
 Using a decorator function (`rate_limiter_dec`) which could be used by other functions in `views.py`.
 Before executing the method in views, check if the number of requests has exceeds the rate limitation.
@@ -51,6 +51,7 @@ http status code: 405 (Method Not Allowed)
   "message": "POST method is not allowed, only GET method is accepted."
 }
 ```
+![405 Method Not Allowed](https://github.com/sombra721/rate_limiter/blob/main/RateLimiter/img/status_405.jpg)
 
 Case 2: If the number of requests the user made exceeds the rate limitation
 ```
@@ -60,6 +61,7 @@ http status code: 429 (Too Many Requests)
   "message": "There are too many requests in a given amount of time (more than 5 requests in past 3000 milliseconds)"
 }
 ```
+![429 Too Many Request](https://github.com/sombra721/rate_limiter/blob/main/RateLimiter/img/status_429.jpg)
 
 Case 3: If the number of requests the user made does not exceed the rate limitation
 ```
@@ -69,3 +71,4 @@ http status code: 200 (OK)
   "message": "Current time: 2023/09/08 23:31:19 UTC"
 }
 ```
+![200 OK](https://github.com/sombra721/rate_limiter/blob/main/RateLimiter/img/status_200.jpg)
