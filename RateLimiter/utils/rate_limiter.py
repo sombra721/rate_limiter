@@ -39,7 +39,7 @@ def rate_limiter_dec(func):
                     'status':
                         'false',
                     'message':
-                        f'There are too many requests in a given amount of time more than {rate_limiter.request_limit} '
+                        f'There are too many requests in a given amount of time (more than {rate_limiter.request_limit} '
                         f'requests in past {rate_limiter.time_range} milliseconds)'
                 }
                 return JsonResponse(data_dict, status=HTTPStatus.TOO_MANY_REQUESTS)
