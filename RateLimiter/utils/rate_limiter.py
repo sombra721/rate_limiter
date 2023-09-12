@@ -19,7 +19,6 @@ rate_limiter = RateLimiter()
 
 def rate_limiter_dec(func):
     def wrapper(*args, **kwargs):
-        result = func(*args, **kwargs)
         user_ip = args[0].META.get('REMOTE_ADDR')
         now = datetime.utcnow().timestamp() * 1000.0
 
@@ -49,6 +48,6 @@ def rate_limiter_dec(func):
             rate_limiter.user_request_timestamp[user_ip].append(now)
 
         # Response the original result from the method
-        return result
+        return func(*args, **kwargs)
 
     return wrapper
